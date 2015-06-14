@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:customer xmlns:ns0="htpp://www.redstream.nl/customer">
+    <ns0:firstName>Pascal</ns0:firstName>
+    <ns0:lastName>Alma</ns0:lastName>
+    <ns0:address>
+        <ns0:street>sesamestreet</ns0:street>
+        <ns0:nr>13</ns0:nr>
+        <ns0:postalCode>
+            <ns0:firstPart>1234</ns0:firstPart>
+            <ns0:secondPart>AB</ns0:secondPart>
+        </ns0:postalCode>
+    </ns0:address>
+</ns0:customer>

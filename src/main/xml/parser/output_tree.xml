@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="parser-interface.xsl"?>
+<!DOCTYPE trips-parser-output SYSTEM "trips-parser-output.dtd">
+<trips-parser-output parser-build-date="2015-06-11T12:37:56-0400" genre="drum" extsformat="table" tagsformat="hidden"
+                     treecontents="phrase" treeformat="LinGO" lfformat="svg"
+                     no-sense-words="history,procedure,histories,procedures,including,developed,development,seen,common"
+                     input="The oncogenes are KRAS, PIK3CA, and BRAF.">
+    <utt>
+        <tree>
+            <lisp>(UTT
+                (UTT
+                (S (NP (SPEC (DET (ART THE))) (N1 (N ONCOGENES)))
+                (VP
+                (VP- (V ARE)
+                (NP (NPSEQ (NP (NAME KRAS)) (PUNC PUNC-COMMA) (NP (NAME PIK 3 CA)))
+                (PUNC PUNC-COMMA) (CONJ AND) (NP (NAME BRAF)))))))
+                (PUNC PUNC-PERIOD))
+            </lisp>
+            <UTT>
+                <UTT>
+                    <S>
+                        <NP>
+                            <SPEC>
+                                <DET>
+                                    <ART>THE</ART>
+                                </DET>
+                            </SPEC>
+                            <N1>
+                                <N>ONCOGENES</N>
+                            </N1>
+                        </NP>
+                        <VP>
+                            <VP->
+                                <V>ARE</V>
+                                <NP>
+                                    <NPSEQ>
+                                        <NP>
+                                            <NAME>KRAS</NAME>
+                                        </NP>
+                                        <PUNC>PUNC-COMMA</PUNC>
+                                        <NP>
+                                            <NAME>PIK 3 CA</NAME>
+                                        </NP>
+                                    </NPSEQ>
+                                    <PUNC>PUNC-COMMA</PUNC>
+                                    <CONJ>AND</CONJ>
+                                    <NP>
+                                        <NAME>BRAF</NAME>
+                                    </NP>
+                                </NP>
+                            </VP->
+                        </VP>
+                    </S>
+                </UTT>
+                <PUNC>PUNC-PERIOD</PUNC>
+            </UTT>
+        </tree>
+    </utt>
+</trips-parser-output>

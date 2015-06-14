@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="parser-interface.xsl"?>
+<!DOCTYPE trips-parser-output SYSTEM "trips-parser-output.dtd">
+<trips-parser-output parser-build-date="2015-06-11T12:37:56-0400" genre="drum" extsformat="table" tagsformat="hidden"
+                     treecontents="phrase" treeformat="LinGO" lfformat="svg"
+                     no-sense-words="history,procedure,histories,procedures,including,developed,development,seen,common"
+                     input="The oncogenes are KRAS, PIK3CA, and BRAF.">
+    <genres>
+        <genre genre="text"
+               tag-type="(or terms words punctuation (and stanford_core_nlp (or named-entity pos)) street_addresses capitalized_names alphanumerics quotations alternate_spellings)"/>
+        <genre genre="speech"
+               tag-type="(or terms words punctuation (and stanford_core_nlp (or named-entity pos)) street_addresses alphanumerics)"/>
+        <genre genre="definition" tag-type="(not all)"/>
+        <genre genre="drum"
+               tag-type="(or words capitalized_names alphanumerics punctuation quotations alternate_spellings (and stanford_core_nlp (not named-entity)) word-net prescriptions drum specialist affixes)"
+               no-sense-words="history,procedure,histories,procedures,including,developed,development,seen,common"/>
+    </genres>
+    <debug>
+        Pruning agenda with beam width 20
+    </debug>
+    <utt>
+        <words>
+            <lisp>(W::THE W::ONCOGENES W::ARE W::KRAS W::PUNC-COMMA W::PIK 3 W::CA W::PUNC-COMMA
+                W::AND W::BRAF W::PUNC-PERIOD)
+            </lisp>
+            <word>THE</word>
+            <word>ONCOGENES</word>
+            <word>ARE</word>
+            <word>KRAS</word>
+            <word>PUNC-COMMA</word>
+            <word>PIK</word>
+            <word>3</word>
+            <word>CA</word>
+            <word>PUNC-COMMA</word>
+            <word>AND</word>
+            <word>BRAF</word>
+            <word>PUNC-PERIOD</word>
+        </words>
+        <tags>
+            <lisp>((WORD &quot;The&quot; :FRAME (0 3) :SENSE-INFO
+                ((:PENN-PARTS-OF-SPEECH (DT) :TRIPS-PARTS-OF-SPEECH (W::ART W::QUAN W::PRO)))
+                :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (WORD &quot;oncogenes&quot; :FRAME (4 13) :SENSE-INFO
+                ((:PENN-PARTS-OF-SPEECH (NNS) :TRIPS-PARTS-OF-SPEECH (W::N)
+                :DOMAIN-SPECIFIC-INFO
+                ((DRUM (SPECIALIST :EUI E0043798 :CITATION-FORM &quot;oncogene&quot;)))))
+                :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (PREFER &quot;The oncogenes&quot; :FRAME (0 13) :PENN-CATS (NP) :TRIPS-CATS (W::NP)
+                :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (WORD &quot;are&quot; :FRAME (14 17) :SENSE-INFO
+                ((:PENN-PARTS-OF-SPEECH (VBP) :TRIPS-PARTS-OF-SPEECH (W::V))) :UTTNUM 65
+                :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (WORD &quot;KRAS&quot; :FRAME (18 21) :SENSE-INFO
+                ((:PENN-PARTS-OF-SPEECH (NNP) :TRIPS-PARTS-OF-SPEECH (W::NAME) :ONT-TYPES
+                (ONT::GENE) :DOMAIN-SPECIFIC-INFO
+                ((DRUM
+                (TERM :ID HGNC::|6407| :NAME &quot;Kirsten rat sarcoma viral oncogene homolog&quot;
+                :MATCHED-VARIANTS (&quot;KRAS&quot;) :DBXREFS (UP::P01116))))))
+                :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (WORD &quot;,&quot; :FRAME (22 23) :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (WORD &quot;PIK&quot; :FRAME (24 26) :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE
+                :DRUM)
+                (WORD &quot;3&quot; :FRAME (27 27) :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (WORD &quot;CA&quot; :FRAME (28 29) :SENSE-INFO
+                ((:PENN-PARTS-OF-SPEECH (NNP) :TRIPS-PARTS-OF-SPEECH (W::NAME) :ONT-TYPES
+                (ONT::CELL-LINE) :DOMAIN-SPECIFIC-INFO
+                ((DRUM (TERM :ID CVCL::E319 :NAME &quot;CA&quot; :MATCHED-VARIANTS (&quot;CA&quot;)))))
+                (:PENN-PARTS-OF-SPEECH (NNP) :TRIPS-PARTS-OF-SPEECH (W::NAME) :ONT-TYPES
+                (ONT::PROTEIN) :DOMAIN-SPECIFIC-INFO
+                ((DRUM
+                (TERM :ID UP::P23033 :NAME
+                &quot;60 kDa chaperonin {ECO:0000255|HAMAP-Rule:MF_00600}&quot; :MATCHED-VARIANTS
+                (&quot;CA&quot;) :DBXREFS (XFAM::PF00118))))))
+                :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (WORD &quot;PIK3CA&quot; :FRAME (24 29) :SENSE-INFO
+                ((:PENN-PARTS-OF-SPEECH (NNP) :TRIPS-PARTS-OF-SPEECH (W::NAME) :ONT-TYPES
+                (ONT::GENE) :DOMAIN-SPECIFIC-INFO
+                ((DRUM
+                (TERM :ID HGNC::|8975| :NAME
+                &quot;phosphatidylinositol-4,5-bisphosphate 3-kinase, catalytic subunit alpha&quot;
+                :MATCHED-VARIANTS (&quot;PIK3CA&quot;) :DBXREFS (UP::P42336))))))
+                :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (WORD &quot;,&quot; :FRAME (30 31) :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (WORD &quot;and&quot; :FRAME (32 35) :SENSE-INFO
+                ((:PENN-PARTS-OF-SPEECH (CC) :TRIPS-PARTS-OF-SPEECH (W::CONJ))) :UTTNUM 65
+                :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (WORD &quot;BRAF&quot; :FRAME (36 39) :SENSE-INFO
+                ((:PENN-PARTS-OF-SPEECH (NNP) :TRIPS-PARTS-OF-SPEECH (W::NAME) :ONT-TYPES
+                (ONT::GENE) :DOMAIN-SPECIFIC-INFO
+                ((DRUM
+                (TERM :ID HGNC::|1097| :NAME
+                &quot;B-Raf proto-oncogene, serine/threonine kinase&quot; :MATCHED-VARIANTS
+                (&quot;BRAF&quot;) :DBXREFS (UP::P15056))))))
+                :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (PREFER &quot;KRAS, PIK3CA, and BRAF&quot; :FRAME (18 39) :PENN-CATS (NP) :TRIPS-CATS
+                (W::NP) :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (PREFER &quot;are KRAS, PIK3CA, and BRAF&quot; :FRAME (14 39) :PENN-CATS (VP)
+                :TRIPS-CATS (W::VP) :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (WORD &quot;.&quot; :FRAME (40 40) :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM)
+                (PREFER &quot;The oncogenes are KRAS, PIK3CA, and BRAF.&quot; :FRAME (0 40) :PENN-CATS
+                (S SBARQ SINV SQ) :UTTNUM 65 :DIRECTION INPUT :UTTNUM 65 :GENRE :DRUM))
+            </lisp>
+            <word lex="The" start="0" end="3">
+                <sense-info penn-parts-of-speech="DT" trips-parts-of-speech="ART,QUAN,PRO"/>
+            </word>
+            <word lex="oncogenes" start="4" end="13">
+                <sense-info penn-parts-of-speech="NNS" trips-parts-of-speech="N">
+                    <specialist eui="E0043798" citation-form="oncogene"/>
+                </sense-info>
+            </word>
+            <prefer text="The oncogenes" start="0" end="13" penn-cats="NP"/>
+            <word lex="are" start="14" end="17">
+                <sense-info penn-parts-of-speech="VBP" trips-parts-of-speech="V"/>
+            </word>
+            <word lex="KRAS" start="18" end="21">
+                <sense-info penn-parts-of-speech="NNP" trips-parts-of-speech="NAME" ont-types="GENE">
+                    <term id="HGNC:6407" name="Kirsten rat sarcoma viral oncogene homolog" dbxrefs="UP:P01116">
+                        <matched-variant>KRAS</matched-variant>
+                    </term>
+                </sense-info>
+            </word>
+            <word lex="," start="22" end="23"/>
+            <word lex="PIK" start="24" end="26"/>
+            <word lex="3" start="27" end="27"/>
+            <word lex="CA" start="28" end="29">
+                <sense-info penn-parts-of-speech="NNP" trips-parts-of-speech="NAME" ont-types="CELL-LINE">
+                    <term id="CVCL:E319" name="CA">
+                        <matched-variant>CA</matched-variant>
+                    </term>
+                </sense-info>
+                <sense-info penn-parts-of-speech="NNP" trips-parts-of-speech="NAME" ont-types="PROTEIN">
+                    <term id="UP:P23033" name="60 kDa chaperonin {ECO:0000255|HAMAP-Rule:MF_00600}"
+                          dbxrefs="XFAM:PF00118">
+                        <matched-variant>CA</matched-variant>
+                    </term>
+                </sense-info>
+            </word>
+            <word lex="PIK3CA" start="24" end="29">
+                <sense-info penn-parts-of-speech="NNP" trips-parts-of-speech="NAME" ont-types="GENE">
+                    <term id="HGNC:8975" name="phosphatidylinositol-4,5-bisphosphate 3-kinase, catalytic subunit alpha"
+                          dbxrefs="UP:P42336">
+                        <matched-variant>PIK3CA</matched-variant>
+                    </term>
+                </sense-info>
+            </word>
+            <word lex="," start="30" end="31"/>
+            <word lex="and" start="32" end="35">
+                <sense-info penn-parts-of-speech="CC" trips-parts-of-speech="CONJ"/>
+            </word>
+            <word lex="BRAF" start="36" end="39">
+                <sense-info penn-parts-of-speech="NNP" trips-parts-of-speech="NAME" ont-types="GENE">
+                    <term id="HGNC:1097" name="B-Raf proto-oncogene, serine/threonine kinase" dbxrefs="UP:P15056">
+                        <matched-variant>BRAF</matched-variant>
+                    </term>
+                </sense-info>
+            </word>
+            <prefer text="KRAS, PIK3CA, and BRAF" start="18" end="39" penn-cats="NP"/>
+            <prefer text="are KRAS, PIK3CA, and BRAF" start="14" end="39" penn-cats="VP"/>
+            <word lex="." start="40" end="40"/>
+            <prefer text="The oncogenes are KRAS, PIK3CA, and BRAF." start="0" end="40" penn-cats="S,SBARQ,SINV,SQ"/>
+        </tags>
+        <tree>
+            <lisp>(UTT
+                (UTT
+                (S (NP (SPEC (DET (ART THE))) (N1 (N ONCOGENES)))
+                (VP
+                (VP- (V ARE)
+                (NP (NPSEQ (NP (NAME KRAS)) (PUNC PUNC-COMMA) (NP (NAME PIK 3 CA)))
+                (PUNC PUNC-COMMA) (CONJ AND) (NP (NAME BRAF)))))))
+                (PUNC PUNC-PERIOD))
+            </lisp>
+            <UTT>
+                <UTT>
+                    <S>
+                        <NP>
+                            <SPEC>
+                                <DET>
+                                    <ART>THE</ART>
+                                </DET>
+                            </SPEC>
+                            <N1>
+                                <N>ONCOGENES</N>
+                            </N1>
+                        </NP>
+                        <VP>
+                            <VP->
+                                <V>ARE</V>
+                                <NP>
+                                    <NPSEQ>
+                                        <NP>
+                                            <NAME>KRAS</NAME>
+                                        </NP>
+                                        <PUNC>PUNC-COMMA</PUNC>
+                                        <NP>
+                                            <NAME>PIK 3 CA</NAME>
+                                        </NP>
+                                    </NPSEQ>
+                                    <PUNC>PUNC-COMMA</PUNC>
+                                    <CONJ>AND</CONJ>
+                                    <NP>
+                                        <NAME>BRAF</NAME>
+                                    </NP>
+                                </NP>
+                            </VP->
+                        </VP>
+                    </S>
+                </UTT>
+                <PUNC>PUNC-PERIOD</PUNC>
+            </UTT>
+        </tree>
+        <terms root="#V242159">
+            <lisp>((ONT::SPEECHACT ONT::V242159 ONT::SA_TELL :PUNCTYPE
+                (ONT::OR ONT::DECL ONT::DECIMALPOINT) :CONTENT ONT::V241958 :START 0 :END 41
+                :START 0 :END 41)
+                (ONT::F ONT::V241958 (:* ONT::BE W::BE) :NEUTRAL ONT::V241951 :NEUTRAL1
+                ONT::V241997 :TENSE ONT::PRES :START 0 :END 40 :WNSENSE &quot;be%2:42:06::&quot; :START
+                0 :END 40)
+                (ONT::THE-SET ONT::V241951 (:* ONT::GENE W::ONCOGENES) :START 0 :END 14
+                :WNSENSE &quot;oncogene%1:08:00::&quot; :START 0 :END 14)
+                (ONT::THE-SET ONT::V241997 ONT::GENE :OPERATOR ONT::AND :SEQUENCE
+                (ONT::V242008 ONT::V241969 ONT::V241990) :START 18 :END 40 :START 18 :END 40)
+                (ONT::THE ONT::V241969 (:* ONT::GENE W::KRAS) :NAME-OF (ONT::KRAS) :START 18
+                :END 22 :DRUM
+                ((:DRUM
+                (TERM :ID HGNC::|6407| :NAME &quot;Kirsten rat sarcoma viral oncogene homolog&quot;
+                :MATCHED-VARIANTS (&quot;KRAS&quot;) :DBXREFS (UP::P01116))))
+                :START 18 :END 22)
+                (ONT::THE ONT::V241990 (:* ONT::GENE W::PIK-3-CA) :NAME-OF
+                (ONT::PIK 3 ONT::CA) :START 24 :END 30 :DRUM
+                ((:DRUM
+                (TERM :ID HGNC::|8975| :NAME
+                &quot;phosphatidylinositol-4,5-bisphosphate 3-kinase, catalytic subunit alpha&quot;
+                :MATCHED-VARIANTS (&quot;PIK3CA&quot;) :DBXREFS (UP::P42336))))
+                :START 24 :END 30)
+                (ONT::THE ONT::V242008 (:* ONT::GENE W::BRAF) :NAME-OF (ONT::BRAF) :START 36
+                :END 40 :DRUM
+                ((:DRUM
+                (TERM :ID HGNC::|1097| :NAME
+                &quot;B-Raf proto-oncogene, serine/threonine kinase&quot; :MATCHED-VARIANTS (&quot;BRAF&quot;)
+                :DBXREFS (UP::P15056))))
+                :START 36 :END 40))
+            </lisp>
+            <rdf:RDF
+                    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                    xmlns:role="http://www.cs.rochester.edu/research/trips/role#"
+                    xmlns:LF="http://www.cs.rochester.edu/research/trips/LF#">
+                <rdf:Description rdf:ID="V242159">
+                    <LF:indicator>SPEECHACT</LF:indicator>
+                    <LF:type>SA_TELL</LF:type>
+                    <role:PUNCTYPE>(OR DECL DECIMALPOINT)</role:PUNCTYPE>
+                    <role:CONTENT rdf:resource="#V241958"/>
+                    <LF:start>0</LF:start>
+                    <LF:end>41</LF:end>
+                    <LF:start>0</LF:start>
+                    <LF:end>41</LF:end>
+                </rdf:Description>
+                <rdf:Description rdf:ID="V241958">
+                    <LF:indicator>F</LF:indicator>
+                    <LF:type>BE</LF:type>
+                    <LF:word>BE</LF:word>
+                    <role:NEUTRAL rdf:resource="#V241951"/>
+                    <role:NEUTRAL1 rdf:resource="#V241997"/>
+                    <role:TENSE>PRES</role:TENSE>
+                    <LF:start>0</LF:start>
+                    <LF:end>40</LF:end>
+                    <role:WNSENSE>be%2:42:06::</role:WNSENSE>
+                    <LF:start>0</LF:start>
+                    <LF:end>40</LF:end>
+                </rdf:Description>
+                <rdf:Description rdf:ID="V241951">
+                    <LF:indicator>THE-SET</LF:indicator>
+                    <LF:type>GENE</LF:type>
+                    <LF:word>ONCOGENES</LF:word>
+                    <LF:start>0</LF:start>
+                    <LF:end>14</LF:end>
+                    <role:WNSENSE>oncogene%1:08:00::</role:WNSENSE>
+                    <LF:start>0</LF:start>
+                    <LF:end>14</LF:end>
+                </rdf:Description>
+                <rdf:Description rdf:ID="V241997">
+                    <LF:indicator>THE-SET</LF:indicator>
+                    <LF:type>GENE</LF:type>
+                    <role:OPERATOR>AND</role:OPERATOR>
+                    <role:SEQUENCE-0 rdf:resource="#V242008"/>
+                    <role:SEQUENCE-1 rdf:resource="#V241969"/>
+                    <role:SEQUENCE-2 rdf:resource="#V241990"/>
+                    <LF:start>18</LF:start>
+                    <LF:end>40</LF:end>
+                    <LF:start>18</LF:start>
+                    <LF:end>40</LF:end>
+                </rdf:Description>
+                <rdf:Description rdf:ID="V241969">
+                    <LF:indicator>THE</LF:indicator>
+                    <LF:type>GENE</LF:type>
+                    <LF:word>KRAS</LF:word>
+                    <role:NAME-OF>(KRAS)</role:NAME-OF>
+                    <LF:start>18</LF:start>
+                    <LF:end>22</LF:end>
+                    <role:DRUM>((:DRUM
+                        (TERM :ID |6407| :NAME &quot;Kirsten rat sarcoma viral oncogene homolog&quot;
+                        :MATCHED-VARIANTS (&quot;KRAS&quot;) :DBXREFS (P01116))))
+                    </role:DRUM>
+                    <LF:start>18</LF:start>
+                    <LF:end>22</LF:end>
+                </rdf:Description>
+                <rdf:Description rdf:ID="V241990">
+                    <LF:indicator>THE</LF:indicator>
+                    <LF:type>GENE</LF:type>
+                    <LF:word>PIK-3-CA</LF:word>
+                    <role:NAME-OF>(PIK 3 CA)</role:NAME-OF>
+                    <LF:start>24</LF:start>
+                    <LF:end>30</LF:end>
+                    <role:DRUM>((:DRUM
+                        (TERM :ID |8975| :NAME
+                        &quot;phosphatidylinositol-4,5-bisphosphate 3-kinase, catalytic subunit alpha&quot;
+                        :MATCHED-VARIANTS (&quot;PIK3CA&quot;) :DBXREFS (P42336))))
+                    </role:DRUM>
+                    <LF:start>24</LF:start>
+                    <LF:end>30</LF:end>
+                </rdf:Description>
+                <rdf:Description rdf:ID="V242008">
+                    <LF:indicator>THE</LF:indicator>
+                    <LF:type>GENE</LF:type>
+                    <LF:word>BRAF</LF:word>
+                    <role:NAME-OF>(BRAF)</role:NAME-OF>
+                    <LF:start>36</LF:start>
+                    <LF:end>40</LF:end>
+                    <role:DRUM>((:DRUM
+                        (TERM :ID |1097| :NAME &quot;B-Raf proto-oncogene, serine/threonine kinase&quot;
+                        :MATCHED-VARIANTS (&quot;BRAF&quot;) :DBXREFS (P15056))))
+                    </role:DRUM>
+                    <LF:start>36</LF:start>
+                    <LF:end>40</LF:end>
+                </rdf:Description>
+            </rdf:RDF>
+        </terms>
+    </utt>
+</trips-parser-output>

@@ -1,0 +1,305 @@
+<!ELEMENT trips-parser-output (genres?, debug?, ekb?, (utt | compound-communication-act)?)>
+<!ATTLIST trips-parser-output input CDATA #IMPLIED
+			      parser-build-date CDATA #REQUIRED
+			      genre CDATA #REQUIRED
+			      treecontents CDATA #REQUIRED
+			      treeformat CDATA #REQUIRED
+			      lfformat CDATA #REQUIRED
+			      tag-type CDATA #IMPLIED
+			      no-sense-words CDATA #IMPLIED
+			      senses-only-for-penn-poss CDATA #IMPLIED>
+<!ELEMENT genres (genre*)>
+<!ELEMENT genre (#PCDATA)>
+<!ATTLIST genre tag-type CDATA #IMPLIED
+		no-sense-words CDATA #IMPLIED
+		senses-only-for-penn-poss CDATA #IMPLIED>
+<!ELEMENT debug (#PCDATA)>
+<!ELEMENT ekb ANY>
+<!ATTLIST ekb file CDATA #IMPLIED>
+<!ELEMENT compound-communication-act (utt*)>
+<!ELEMENT utt (words, tags, tree, terms)>
+<!ELEMENT lisp (#PCDATA)>
+<!ELEMENT words (lisp, word*)>
+<!ELEMENT word (#PCDATA | sense-info)*>
+<!ATTLIST word lex CDATA #IMPLIED
+	       start CDATA #IMPLIED
+	       end CDATA #IMPLIED>
+<!ELEMENT prefix (sense-info*)>
+<!ATTLIST prefix lex CDATA #IMPLIED
+	         start CDATA #IMPLIED
+	         end CDATA #IMPLIED>
+<!ELEMENT tags (lisp, (word | prefix | prefer)*)>
+<!ELEMENT sense-info ANY>
+<!ATTLIST sense-info penn-parts-of-speech CDATA #IMPLIED
+		     trips-parts-of-speech CDATA #IMPLIED
+		     ont-types CDATA #IMPLIED
+		     wn-sense-keys CDATA #IMPLIED
+		     alternate-spellings CDATA #IMPLIED
+		     score CDATA #IMPLIED>
+<!ELEMENT prefer EMPTY>
+<!ATTLIST prefer text CDATA #IMPLIED
+		 start CDATA #IMPLIED
+		 end CDATA #IMPLIED
+		 penn-cats CDATA #IMPLIED
+		 score CDATA #IMPLIED>
+
+<!ENTITY % parts-of-speech "ADJ | ADV | ART | CONJ | FP | INFINITIVAL-TO | N | NAME | NEG | NUMBER-UNIT | ORDINAL | PREP | PRO | PUNC | QUAN | UTTWORD | V | VALUE">
+<!ELEMENT ADJ (#PCDATA)>
+<!ELEMENT ADV (#PCDATA)>
+<!ELEMENT ART (#PCDATA)>
+<!ELEMENT CONJ (#PCDATA)>
+<!ELEMENT FP (#PCDATA)>
+<!ELEMENT INFINITIVAL-TO (#PCDATA)>
+<!ELEMENT N (#PCDATA)>
+<!ELEMENT NAME (#PCDATA)>
+<!ELEMENT NEG (#PCDATA)>
+<!ELEMENT NUMBER-UNIT (#PCDATA)>
+<!ELEMENT ORDINAL (#PCDATA)>
+<!ELEMENT PREP (#PCDATA)>
+<!ELEMENT PRO (#PCDATA)>
+<!ELEMENT PUNC (#PCDATA)>
+<!ELEMENT QUAN (#PCDATA)>
+<!ELEMENT UTTWORD (#PCDATA)>
+<!ELEMENT V (#PCDATA)>
+<!ELEMENT VALUE (#PCDATA)>
+
+<!ENTITY % syntactic-categories "ADJP | ADVBL | AUX | CP | DET | N1 | NP | NUMBER | PP | PRED | QUANP | S | SPEC | UTT | V1 | VP | VP- | WORD">
+<!ENTITY % syncatdef "((%parts-of-speech; | %syntactic-categories;)*)">
+<!ELEMENT ADJP %syncatdef;>
+<!ELEMENT ADVBL %syncatdef;>
+<!ELEMENT AUX %syncatdef;>
+<!ELEMENT CP %syncatdef;>
+<!ELEMENT DET %syncatdef;>
+<!ELEMENT N1 %syncatdef;>
+<!ELEMENT NP %syncatdef;>
+<!ELEMENT NUMBER %syncatdef;>
+<!ELEMENT PP %syncatdef;>
+<!ELEMENT PRED %syncatdef;>
+<!ELEMENT QUANP %syncatdef;>
+<!ELEMENT S %syncatdef;>
+<!ELEMENT SPEC %syncatdef;>
+<!ELEMENT UTT %syncatdef;>
+<!ELEMENT V1 %syncatdef;>
+<!ELEMENT VP %syncatdef;>
+<!ELEMENT VP- %syncatdef;>
+<!ELEMENT WORD %syncatdef;>
+
+<!ELEMENT tree (lisp, (%syntactic-categories;))>
+
+<!ELEMENT terms (lisp, rdf:RDF)>
+<!ATTLIST terms root CDATA #REQUIRED>
+<!ELEMENT rdf:RDF (rdf:Description*)>
+<!ATTLIST rdf:RDF
+          xmlns:rdf CDATA #FIXED "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+          xmlns:role CDATA #FIXED "http://www.cs.rochester.edu/research/trips/role#"
+          xmlns:LF CDATA #FIXED "http://www.cs.rochester.edu/research/trips/LF#"
+          >
+
+<!ENTITY % roles "role:ACTION | role:ADDRESSEE | role:AFFECTED | role:AFFECTED1 | role:AFFECTED-RESULT | role:AFFECTED-RESULT1 | role:AFFECTED-CREATE | role:AFFECTED-CREATE1 | role:AGENT | role:AGENT1 | role:ALONG | role:ARG0 | role:ARG1 | role:ASSOC-WITH | role:ASSOCIATED-INFORMATION | role:BENEFICIARY | role:CAUSE | role:CO-AGENT | role:CO-RESULT | role:CO-THEME | role:COGNIZER | role:CONTENT | role:CONTENTS | role:COST | role:CRITERION | role:DONOR | role:DURATION | role:EFFECT | role:EFFECT-IMPLICIT | role:ENTITY | role:EXPERIENCER | role:EXTENT | role:FIGURE | role:FORMAL | role:FORMAL1 | role:FROM-LOC | role:GOAL | role:GOAL-RELN | role:GOODS | role:GROUND | role:INSTRUMENT | role:INTERVAL | role:LOCATION | role:MANNER | role:MATERIAL | role:MONEY | role:NEUTRAL | role:NEUTRAL1 | role:NEUTRAL2 | role:NOROLE | role:OBJ-VAL | role:OF | role:OF-STATE | role:OF1 | role:OF2 | role:ORIGINATOR | role:PATH | role:PLACE | role:POSITION-RELN | role:PREDICATE | role:PROPERTY | role:PURPOSE | role:PURPOSE-IMPLICIT | role:RESULT | role:RESULT-VAL | role:SIT-VAL | role:SITUATION | role:SOURCE | role:SOURCE-RELN | role:SPATIAL-LOC | role:STATIVE | role:STIMULUS | role:THEME | role:TIME-DURATION-REL | role:TIME-VAL | role:TO-LOC | role:VAL | role:VAL2 | role:VALUE | role:VIA | role:ARG2 | role:ACT-0 | role:ACT-1 | role:ACT-2 | role:AND-ELEMENT | role:OR-ELEMENT | role:CONTEXT-REL | role:MEMBER | role:MOD | role:NEGATION | role:PROGR | role:PUNCTYPE | role:SEQUENCE-0 | role:SEQUENCE-1 | role:SEQUENCE-2 | role:TENSE | role:VFORM">
+
+<!ENTITY % roledef "(#PCDATA)">
+<!ELEMENT role:ACTION %roledef;>
+<!ELEMENT role:ADDRESSEE %roledef;>
+<!ELEMENT role:AFFECTED %roledef;>
+<!ELEMENT role:AFFECTED1 %roledef;>
+<!ELEMENT role:AFFECTED-RESULT %roledef;>
+<!ELEMENT role:AFFECTED-RESULT1 %roledef;>
+<!ELEMENT role:AFFECTED-CREATE %roledef;>
+<!ELEMENT role:AFFECTED-CREATE1 %roledef;>
+<!ELEMENT role:AGENT %roledef;>
+<!ELEMENT role:AGENT1 %roledef;>
+<!ELEMENT role:ALONG %roledef;>
+<!ELEMENT role:ARG0 %roledef;>
+<!ELEMENT role:ARG1 %roledef;>
+<!ELEMENT role:ASSOC-WITH %roledef;>
+<!ELEMENT role:ASSOCIATED-INFORMATION %roledef;>
+<!ELEMENT role:BENEFICIARY %roledef;>
+<!ELEMENT role:CAUSE %roledef;>
+<!ELEMENT role:CO-AGENT %roledef;>
+<!ELEMENT role:CO-RESULT %roledef;>
+<!ELEMENT role:CO-THEME %roledef;>
+<!ELEMENT role:COGNIZER %roledef;>
+<!ELEMENT role:CONTENT %roledef;>
+<!ELEMENT role:CONTENTS %roledef;>
+<!ELEMENT role:COST %roledef;>
+<!ELEMENT role:CRITERION %roledef;>
+<!ELEMENT role:DONOR %roledef;>
+<!ELEMENT role:DURATION %roledef;>
+<!ELEMENT role:EFFECT %roledef;>
+<!ELEMENT role:EFFECT-IMPLICIT %roledef;>
+<!ELEMENT role:ENTITY %roledef;>
+<!ELEMENT role:EXPERIENCER %roledef;>
+<!ELEMENT role:EXTENT %roledef;>
+<!ELEMENT role:FIGURE %roledef;>
+<!ELEMENT role:FORMAL %roledef;>
+<!ELEMENT role:FORMAL1 %roledef;>
+<!ELEMENT role:FROM-LOC %roledef;>
+<!ELEMENT role:GOAL %roledef;>
+<!ELEMENT role:GOAL-RELN %roledef;>
+<!ELEMENT role:GOODS %roledef;>
+<!ELEMENT role:GROUND %roledef;>
+<!ELEMENT role:INSTRUMENT %roledef;>
+<!ELEMENT role:INTERVAL %roledef;>
+<!ELEMENT role:LOCATION %roledef;>
+<!ELEMENT role:MANNER %roledef;>
+<!ELEMENT role:MATERIAL %roledef;>
+<!ELEMENT role:MONEY %roledef;>
+<!ELEMENT role:NEUTRAL %roledef;>
+<!ELEMENT role:NEUTRAL1 %roledef;>
+<!ELEMENT role:NEUTRAL2 %roledef;>
+<!ELEMENT role:NOROLE %roledef;>
+<!ELEMENT role:OBJ-VAL %roledef;>
+<!ELEMENT role:OF %roledef;>
+<!ELEMENT role:OF-STATE %roledef;>
+<!ELEMENT role:OF1 %roledef;>
+<!ELEMENT role:OF2 %roledef;>
+<!ELEMENT role:ORIGINATOR %roledef;>
+<!ELEMENT role:PATH %roledef;>
+<!ELEMENT role:PLACE %roledef;>
+<!ELEMENT role:POSITION-RELN %roledef;>
+<!ELEMENT role:PREDICATE %roledef;>
+<!ELEMENT role:PROPERTY %roledef;>
+<!ELEMENT role:PURPOSE %roledef;>
+<!ELEMENT role:PURPOSE-IMPLICIT %roledef;>
+<!ELEMENT role:RESULT %roledef;>
+<!ELEMENT role:RESULT-VAL %roledef;>
+<!ELEMENT role:SIT-VAL %roledef;>
+<!ELEMENT role:SITUATION %roledef;>
+<!ELEMENT role:SOURCE %roledef;>
+<!ELEMENT role:SOURCE-RELN %roledef;>
+<!ELEMENT role:SPATIAL-LOC %roledef;>
+<!ELEMENT role:STATIVE %roledef;>
+<!ELEMENT role:STIMULUS %roledef;>
+<!ELEMENT role:THEME %roledef;>
+<!ELEMENT role:TIME-DURATION-REL %roledef;>
+<!ELEMENT role:TIME-VAL %roledef;>
+<!ELEMENT role:TO-LOC %roledef;>
+<!ELEMENT role:VAL %roledef;>
+<!ELEMENT role:VAL2 %roledef;>
+<!ELEMENT role:VALUE %roledef;>
+<!ELEMENT role:VIA %roledef;>
+<!ELEMENT role:ARG2 %roledef;>
+<!ELEMENT role:ACT-0 %roledef;>
+<!ELEMENT role:ACT-1 %roledef;>
+<!ELEMENT role:ACT-2 %roledef;>
+<!ELEMENT role:AND-ELEMENT %roledef;>
+<!ELEMENT role:OR-ELEMENT %roledef;>
+<!ELEMENT role:CONTEXT-REL %roledef;>
+<!ELEMENT role:MEMBER %roledef;>
+<!ELEMENT role:MOD %roledef;>
+<!ELEMENT role:NEGATION %roledef;>
+<!ELEMENT role:PROGR %roledef;>
+<!ELEMENT role:PUNCTYPE %roledef;>
+<!ELEMENT role:SEQUENCE-0 %roledef;>
+<!ELEMENT role:SEQUENCE-1 %roledef;>
+<!ELEMENT role:SEQUENCE-2 %roledef;>
+<!ELEMENT role:TENSE %roledef;>
+<!ELEMENT role:VFORM %roledef;>
+
+<!ENTITY % roleattdef "rdf:resource CDATA #IMPLIED">
+<!ATTLIST role:ACTION %roleattdef;>
+<!ATTLIST role:ADDRESSEE %roleattdef;>
+<!ATTLIST role:AFFECTED %roleattdef;>
+<!ATTLIST role:AFFECTED1 %roleattdef;>
+<!ATTLIST role:AFFECTED-RESULT %roleattdef;>
+<!ATTLIST role:AFFECTED-RESULT1 %roleattdef;>
+<!ATTLIST role:AFFECTED-CREATE %roleattdef;>
+<!ATTLIST role:AFFECTED-CREATE1 %roleattdef;>
+<!ATTLIST role:AGENT %roleattdef;>
+<!ATTLIST role:AGENT1 %roleattdef;>
+<!ATTLIST role:ALONG %roleattdef;>
+<!ATTLIST role:ARG0 %roleattdef;>
+<!ATTLIST role:ARG1 %roleattdef;>
+<!ATTLIST role:ASSOC-WITH %roleattdef;>
+<!ATTLIST role:ASSOCIATED-INFORMATION %roleattdef;>
+<!ATTLIST role:BENEFICIARY %roleattdef;>
+<!ATTLIST role:CAUSE %roleattdef;>
+<!ATTLIST role:CO-AGENT %roleattdef;>
+<!ATTLIST role:CO-RESULT %roleattdef;>
+<!ATTLIST role:CO-THEME %roleattdef;>
+<!ATTLIST role:COGNIZER %roleattdef;>
+<!ATTLIST role:CONTENT %roleattdef;>
+<!ATTLIST role:CONTENTS %roleattdef;>
+<!ATTLIST role:COST %roleattdef;>
+<!ATTLIST role:CRITERION %roleattdef;>
+<!ATTLIST role:DONOR %roleattdef;>
+<!ATTLIST role:DURATION %roleattdef;>
+<!ATTLIST role:EFFECT %roleattdef;>
+<!ATTLIST role:EFFECT-IMPLICIT %roleattdef;>
+<!ATTLIST role:ENTITY %roleattdef;>
+<!ATTLIST role:EXPERIENCER %roleattdef;>
+<!ATTLIST role:EXTENT %roleattdef;>
+<!ATTLIST role:FIGURE %roleattdef;>
+<!ATTLIST role:FORMAL %roleattdef;>
+<!ATTLIST role:FORMAL1 %roleattdef;>
+<!ATTLIST role:FROM-LOC %roleattdef;>
+<!ATTLIST role:GOAL %roleattdef;>
+<!ATTLIST role:GOAL-RELN %roleattdef;>
+<!ATTLIST role:GOODS %roleattdef;>
+<!ATTLIST role:GROUND %roleattdef;>
+<!ATTLIST role:INSTRUMENT %roleattdef;>
+<!ATTLIST role:INTERVAL %roleattdef;>
+<!ATTLIST role:LOCATION %roleattdef;>
+<!ATTLIST role:MANNER %roleattdef;>
+<!ATTLIST role:MATERIAL %roleattdef;>
+<!ATTLIST role:MONEY %roleattdef;>
+<!ATTLIST role:NEUTRAL %roleattdef;>
+<!ATTLIST role:NEUTRAL1 %roleattdef;>
+<!ATTLIST role:NEUTRAL2 %roleattdef;>
+<!ATTLIST role:NOROLE %roleattdef;>
+<!ATTLIST role:OBJ-VAL %roleattdef;>
+<!ATTLIST role:OF %roleattdef;>
+<!ATTLIST role:OF-STATE %roleattdef;>
+<!ATTLIST role:OF1 %roleattdef;>
+<!ATTLIST role:OF2 %roleattdef;>
+<!ATTLIST role:ORIGINATOR %roleattdef;>
+<!ATTLIST role:PATH %roleattdef;>
+<!ATTLIST role:PLACE %roleattdef;>
+<!ATTLIST role:POSITION-RELN %roleattdef;>
+<!ATTLIST role:PREDICATE %roleattdef;>
+<!ATTLIST role:PROPERTY %roleattdef;>
+<!ATTLIST role:PURPOSE %roleattdef;>
+<!ATTLIST role:PURPOSE-IMPLICIT %roleattdef;>
+<!ATTLIST role:RESULT %roleattdef;>
+<!ATTLIST role:RESULT-VAL %roleattdef;>
+<!ATTLIST role:SIT-VAL %roleattdef;>
+<!ATTLIST role:SITUATION %roleattdef;>
+<!ATTLIST role:SOURCE %roleattdef;>
+<!ATTLIST role:SOURCE-RELN %roleattdef;>
+<!ATTLIST role:SPATIAL-LOC %roleattdef;>
+<!ATTLIST role:STATIVE %roleattdef;>
+<!ATTLIST role:STIMULUS %roleattdef;>
+<!ATTLIST role:THEME %roleattdef;>
+<!ATTLIST role:TIME-DURATION-REL %roleattdef;>
+<!ATTLIST role:TIME-VAL %roleattdef;>
+<!ATTLIST role:TO-LOC %roleattdef;>
+<!ATTLIST role:VAL %roleattdef;>
+<!ATTLIST role:VAL2 %roleattdef;>
+<!ATTLIST role:VALUE %roleattdef;>
+<!ATTLIST role:VIA %roleattdef;>
+<!ATTLIST role:ARG2 %roleattdef;>
+<!ATTLIST role:ACT-0 %roleattdef;>
+<!ATTLIST role:ACT-1 %roleattdef;>
+<!ATTLIST role:ACT-2 %roleattdef;>
+<!ATTLIST role:AND-ELEMENT %roleattdef;>
+<!ATTLIST role:OR-ELEMENT %roleattdef;>
+<!ATTLIST role:CONTEXT-REL %roleattdef;>
+<!ATTLIST role:MEMBER %roleattdef;>
+<!ATTLIST role:MOD %roleattdef;>
+<!ATTLIST role:NEGATION %roleattdef;>
+<!ATTLIST role:PROGR %roleattdef;>
+<!ATTLIST role:PUNCTYPE %roleattdef;>
+<!ATTLIST role:SEQUENCE-0 %roleattdef;>
+<!ATTLIST role:SEQUENCE-1 %roleattdef;>
+<!ATTLIST role:SEQUENCE-2 %roleattdef;>
+<!ATTLIST role:TENSE %roleattdef;>
+<!ATTLIST role:VFORM %roleattdef;>
+
+
+<!ELEMENT rdf:Description (LF:indicator, LF:type, LF:word?, ((%roles;)*))>
+<!ATTLIST rdf:Description rdf:ID ID #REQUIRED>
+<!ELEMENT LF:indicator (#PCDATA)>
+<!ELEMENT LF:type (#PCDATA)>
+<!ELEMENT LF:word (#PCDATA)>
+<!ELEMENT LF:start (#PCDATA)>
+<!ELEMENT LF:end (#PCDATA)>

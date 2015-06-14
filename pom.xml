@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>edu.brandeis.cs</groupId>
+    <artifactId>xslt2svg</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+    </dependencies>
+    <!-- Use relative paths otherwise stylesheet includes will fail miserably -->
+    <properties>
+        <xsd.path>src/main/xsd</xsd.path>
+        <xsd.path.concept>${xsd.path}/concept</xsd.path.concept>
+        <xsd.path.final>${xsd.path}/final</xsd.path.final>
+        <xslt.path>src/main/xslt</xslt.path>
+        <xml.path>src/main/xml</xml.path>
+    </properties>
+    <build>
+        <plugins>
+            <!-- Copy the basic-types.xsd to the target location. This one doesn't
+            need any translation -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${xsd.path.final}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${xsd.path}</directory>
+                                    <includes>
+                                        <include>basic-types.xsd</include>
+                                    </includes>
+                                    <filtering>false</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Transform all 'concept' xsd to the correct 'final' xsd's -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>transform</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <transformationSets>
+                        <transformationSet>
+                            <dir>${xsd.path.concept}</dir>
+                            <includes>
+                                <include>customer_concept.xsd</include>
+                            </includes>
+                            <stylesheet>${xslt.path}/transform_customer.xslt</stylesheet>
+                            <outputDir>${xsd.path.final}</outputDir>
+                            <fileMappers>
+                                <fileMapper implementation="org.codehaus.plexus.components.io.filemappers.MergeFileMapper">
+                                    <targetName>customer.xsd</targetName>
+                                </fileMapper>
+                            </fileMappers>
+                        </transformationSet>
+
+                    </transformationSets>
+                </configuration>
+                <!-- make the translation working with xslt2.0 -->
+                <dependencies>
+                    <dependency>
+                        <groupId>net.sf.saxon</groupId>
+                        <artifactId>Saxon-HE</artifactId>
+                        <version>9.6.0-5</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <!-- Validate the generated XSD against valid XML files to make
+            sure nothing broke-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>validate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <validationSets>
+                        <validationSet>
+                            <dir>${xml.path}/</dir>
+                            <includes>
+                                <include>customer-msg.xml</include>
+                            </includes>
+                            <validating>true</validating>
+                            <systemId>${xsd.path.final}/customer.xsd</systemId>
+                        </validationSet>
+                    </validationSets>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.sf.saxon</groupId>
+                        <artifactId>Saxon-HE</artifactId>
+                        <version>9.6.0-5</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <!-- Plugin to clean the generated XSD's when rebuilding the project -->
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${xsd.path.final}</directory>
+                            <includes>
+                                <include>**/*.xsd</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
